@@ -6,7 +6,7 @@ LINKS=-lm -lGL -lGLU -lSDL2
 EXE=engine
 
 # Directories
-SOURCES = src src/lua src/lua-api
+SOURCES = src
 # Files
 CFILES = $(foreach dir,$(SOURCES),$(wildcard $(dir)/*.c))
 OBJ = $(CFILES:.c=.o)

@@ -10,7 +10,7 @@ gui *guis[65536];
 int currentGUI = 0;
 
 void gui_init(void) {
-	printf("GUI size: %lu\n", sizeof(gui));
+	//
 }
 
 void gui_draw(void) {

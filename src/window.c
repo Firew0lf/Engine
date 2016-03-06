@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 #include <SDL2/SDL.h>
 #include <GL/gl.h>
@@ -22,6 +23,8 @@ int windowHeight = 480;
 
 int fpsCounter = 0;
 int fpsNumber = 0;
+
+const char *mainTitle = "Engine";
 
 void window_init(void) {
 	// SDL base stuff
@@ -136,7 +139,10 @@ int window_getFps(void) {
 	if (second != time(NULL)) {
 		fpsNumber = fpsCounter;
 		fpsCounter = 0;
-		printf("%i FPS\n", fpsNumber); // TODO: remove this sh*t
+		char *title = malloc(strlen(mainTitle)+20);
+		sprintf(title, "%s | %d FPS", mainTitle, fpsNumber);
+		SDL_SetWindowTitle(windowMain, title);
+		free(title);
 		second = time(NULL);
 	}
 	return fpsNumber;

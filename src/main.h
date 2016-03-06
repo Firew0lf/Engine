@@ -4,10 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "lua/lua.h"
-#include "lua/lapi.h"
-#include "lua/lualib.h"
-#include "lua/lauxlib.h"
+#include "types.h"
 
 // version
 #define MAJOR_VERSION "0"
@@ -23,15 +20,6 @@
 void error(int code, const char *err);
 #endif
 
-// Lua
-lua_State *mainState;
-
-// engine state
-typedef enum {
-	state_undef,
-	state_exiting,
-} engineState;
-engineState currentState;
-void setState(engineState state);
+bool shouldExit;
 
 #endif

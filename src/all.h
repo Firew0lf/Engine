@@ -9,7 +9,6 @@
 #include "events.h"
 #include "log.h"
 #include "main.h"
-#include "modloader.h"
 #include "texture.h"
 #include "types.h"
 #include "window.h"

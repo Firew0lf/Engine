@@ -36,6 +36,7 @@ GLuint texture_loadFromPixels16(Uint16* pixels, int w, int h) { // RGBA4
 }
 
 void texture_unload(GLuint texture) {
+	log_write(loggingLevel_debug, "Unloaded texture %d", texture);
 	glDeleteTextures(1, &texture);
 }
 

@@ -18,7 +18,7 @@ void events_handleEvents(void) {
 		switch (event.type) {
 			case SDL_QUIT:
 				log_write(loggingLevel_info, "Exiting ...");
-				setState(state_exiting);
+				shouldExit = true;
 				break;
 
 			case SDL_WINDOWEVENT:

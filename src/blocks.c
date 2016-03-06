@@ -11,7 +11,7 @@
 #include "log.h"
 
 block* blocks[BLOCKS_MAX];
-int newBlockId = 0;
+blockID newBlockId = 0;
 
 Uint16 defaultTexturePixels[2*2] = {
 	0xf0f0, 0x0007,
@@ -27,6 +27,7 @@ void blocks_init(void) {
 	log_write(loggingLevel_trace, "Max RAM used for blocks: %i KiB", ((sizeof(block)+sizeof(void*))*BLOCKS_MAX)/1024);
 	
 	defaultTexture = texture_loadFromPixels16(defaultTexturePixels, 2, 2);
+	//defaultTexture = texture_load("./src/data/cobble.bmp");
 	defaultBlock = malloc(sizeof(block));
 	defaultBlock->name = "missingno";
 	defaultBlock->id = -1;
@@ -37,7 +38,12 @@ void blocks_init(void) {
 	blocks_new(0);
 }
 
-int blocks_new(int id) {
+void blocks_exit(void) {
+	texture_unload(defaultTexture);
+	free(defaultBlock);
+}
+
+blockID blocks_new(blockID id) {
 	if (id < 0 || id > (BLOCKS_MAX-1)) {
 		return BAD_ID;
 	}
@@ -52,6 +58,10 @@ int blocks_new(int id) {
 	}
 	
 	return id;
+}
+
+void blocks_detroy(blockID id) {
+
 }
 
 block* blocks_get(int id) {
